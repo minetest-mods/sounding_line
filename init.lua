@@ -69,7 +69,7 @@ minetest.register_node("sounding_line:sounding_line", {
 					encountered_lava = true
 				end
 				local def = minetest.registered_nodes[name]
-				if not def.buildable_to then
+				if def.walkable then
 					end_depth = pos.y - y
 				end
 				
