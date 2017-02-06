@@ -9,6 +9,13 @@ if minetest.get_modpath("default") then
 	node_sound = default.node_sound_wood_defaults()
 end
 
+local particles = minetest.setting_get("enable_particles")
+if particles == "true" or particles == nil then
+	particles = true -- default true
+else
+	particles = false
+end
+
 minetest.register_node("sounding_line:sounding_line", {
 	description = S("Sounding Line"),
 	_doc_items_longdesc = S("A spool of marked line with a weight on the end used for measuring depths."),
@@ -95,6 +102,26 @@ minetest.register_node("sounding_line:sounding_line", {
 		
 		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", status)
+		
+		if particles then
+			minetest.add_particlespawner({
+				amount = 50,
+				time = 1,
+				minpos = pos,
+				maxpos = pos,
+				minvel = {x=0, y=-10, z=0},
+				maxvel = {x=0, y=-10, z=0},
+				minacc = {x=0, y=0, z=0},
+				maxacc = {x=0, y=0, z=0},
+				minexptime = 1,
+				maxexptime = 1,
+				minsize = 8,
+				maxsize = 8,
+				collisiondetection = true,
+				vertical = true,
+				texture = "sounding_line_particle.png",
+			})
+		end
 	end,
 })
 
