@@ -147,3 +147,14 @@ if minetest.get_modpath("default") then
 		})
 	end
 end
+
+if minetest.get_modpath("loot") then
+	loot.register_loot({
+		weights = { generic = 50 },
+		payload = {
+			stack = ItemStack("sounding_line:sounding_line"),
+			min_size = 1,
+			max_size = 4,
+		},
+	})
+end

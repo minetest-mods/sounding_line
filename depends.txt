@@ -3,3 +3,4 @@ doc?
 intllib?
 farming?
 vines?
+loot?
