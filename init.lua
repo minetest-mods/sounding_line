@@ -122,6 +122,8 @@ minetest.register_node("sounding_line:sounding_line", {
 				texture = "sounding_line_particle.png",
 			})
 		end
+		
+		minetest.sound_play("sounding_line_whooshing", {pos=pos})
 	end,
 })
 
