@@ -123,7 +123,7 @@ minetest.register_node("sounding_line:sounding_line", {
 			})
 		end
 		
-		minetest.sound_play("sounding_line_whooshing", {pos=pos})
+		minetest.sound_play("sounding_line_whooshing", {pos=pos, gain=0.5})
 	end,
 })
 
