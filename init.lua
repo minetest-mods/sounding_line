@@ -127,27 +127,34 @@ minetest.register_node("sounding_line:sounding_line", {
 	end,
 })
 
+if minetest.get_modpath("farming") then
+	local old_def = minetest.registered_craftitems["farming:cotton"]
+	if old_def then
+		old_def.groups["thread"] = 1
+		minetest.override_item("farming:cotton", {
+			groups = old_def.groups
+		})
+	end
+end
+
 if minetest.get_modpath("default") then
-	if minetest.get_modpath("farming") then
-		minetest.register_craft({
-			output = "sounding_line:sounding_line",
-			recipe =  {
-				{'group:stick','group:stick','group:stick'},
-				{'farming:cotton','farming:cotton','farming:cotton'},
-				{'','default:steel_ingot',''}
-			}
-		})
-	end
-	if minetest.get_modpath("vines") then
-		minetest.register_craft({
-			output = "sounding_line:sounding_line",
-			recipe =  {
-				{'group:stick','group:stick','group:stick'},
-				{'','group:vines',''},
-				{'','default:steel_ingot',''}
-			}
-		})
-	end
+	minetest.register_craft({
+		output = "sounding_line:sounding_line",
+		recipe =  {
+			{'group:stick','group:stick','group:stick'},
+			{'group:thread','group:thread','group:thread'},
+			{'','default:steel_ingot',''}
+		}
+	})
+
+	minetest.register_craft({
+		output = "sounding_line:sounding_line",
+		recipe =  {
+			{'group:stick','group:stick','group:stick'},
+			{'','group:vines',''},
+			{'','default:steel_ingot',''}
+		}
+	})
 end
 
 if minetest.get_modpath("loot") then
