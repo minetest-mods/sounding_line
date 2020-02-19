@@ -8,12 +8,7 @@ if minetest.get_modpath("default") then
 	node_sound = default.node_sound_wood_defaults()
 end
 
-local particles = minetest.setting_get("enable_particles")
-if particles == "true" or particles == nil then
-	particles = true -- default true
-else
-	particles = false
-end
+local particles = minetest.settings:get_bool("enable_particles", true)
 
 local longdesc
 local usagehelp
