@@ -28,6 +28,7 @@ minetest.register_node("sounding_line:sounding_line", {
 		"sounding_line_side.png","sounding_line_side.png^[transformFX",
 		"sounding_line_front.png","sounding_line_front.png^[transformFX"},
 	sounds = node_sound,
+	use_texture_alpha = "clip",
 	climbable = true,
 	walkable = false,
 	paramtype = "light",
